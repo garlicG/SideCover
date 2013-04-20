@@ -1,0 +1,13 @@
+<resources>
+
+    <attr name="sideCoverStyle" format="reference" />
+
+    <declare-styleable name="SideCover">
+        <attr name="scCoverBackground" format="reference" />
+        <attr name="scCoverWidth" format="dimension" />
+        <attr name="scDropShadowWidth" format="dimension" />
+        <attr name="scDropShadowColor" format="color" />
+        <attr name="scTranslateAnimation" format="boolean" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+    
+    <style name="Widget" />
+
+    <!-- Base theme for the menu drawer. 
+        <item name="scCoverBackground">@draw</item>
+    -->
+    <style name="Widget.SideCover">
+    </style>
+
+</resources>

@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+    
+    <style name="CusomTheme" parent="@android:style/Theme.Black">
+        <item name="sideCoverStyle">@style/CustomSideCover</item>
+    </style>
+    
+    
+	<!-- lazy definition... -->
+    <color name="backgroundColor">#222</color>
+    <style name="CustomSideCover">
+        <item name="scCoverBackground">@color/backgroundColor</item>
+        <item name="scCoverWidth">120dp</item>
+        <item name="scDropShadowWidth">8dp</item>
+        <item name="scDropShadowColor">@color/backgroundColor</item>
+        <item name="scTranslateAnimation">true</item>
+    </style>
+
+</resources>
