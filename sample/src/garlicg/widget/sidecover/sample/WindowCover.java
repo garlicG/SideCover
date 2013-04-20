@@ -2,17 +2,15 @@ package garlicg.widget.sidecover.sample;
 
 import garlicg.widget.sidecover.CoverManager;
 import garlicg.widget.sidecover.SideCover;
-import garlicg.widget.sidecover.sample.SimpleCover.Items;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class WindowCover extends Activity implements OnItemClickListener{
 	CoverManager mCoverManager;

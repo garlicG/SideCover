@@ -7,5 +7,9 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!-- API 11 theme customizations can go here. -->
     </style>
+    
+    <style name="CusomTheme" parent="@android:style/Theme.Holo">
+        <item name="sideCoverStyle">@style/CustomSideCover</item>
+    </style>
 
 </resources>
