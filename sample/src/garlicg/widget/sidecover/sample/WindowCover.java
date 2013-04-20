@@ -27,7 +27,7 @@ public class WindowCover extends Activity implements OnItemClickListener{
 				SideCover.TOUCH_MODE_CONTENT
 				);
 		
-		// Do not call setContentView here, CoverManager set contentView with this TextView
+		// Do not call setContentView here, CoverManager set contentView with layout resource
 		mCoverManager.setContentViewWithWindowCover(R.layout.activity_simple_cover);
 		
 		// set original view to the cover
