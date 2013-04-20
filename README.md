@@ -10,7 +10,6 @@ SideCoverはコンテンツの上側に表示されるカバーのようなウ�
 * StyleでいくつかのCoverの属性を指定できます。  
   * background,coverWidth,shadowWidh,shadowColor,透過アニメーションの有無
 
-![ss1](screenshots/ss1.png)
 ![ss2](screenshots/ss2.png)
 ![ss3](screenshots/ss3.png)
 
