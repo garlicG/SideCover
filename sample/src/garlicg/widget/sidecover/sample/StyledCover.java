@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class StyledCover extends Activity implements OnItemClickListener{
+	// aa
 	CoverManager mCoverManager;
 	TextView mTextView;
 
