@@ -3,12 +3,13 @@ SideCover
 
 Features　
 --
-SideCoverはコンテンツの上側に表示されるカバーのようなウィジェットです。
+SideCoverはコンテンツの上側に表示されるカバーのようなUIウィジェットです。
 
-* CoverはLeftSideかRightSideを指定します。
+* Coverは左側か右側に実装できます。
 * スワイプ操作でCoverを開け閉めすることもできます。  
 * StyleでいくつかのCoverの属性を指定できます。  
   * background,coverWidth,shadowWidh,shadowColor,透過アニメーションの有無
+* Window、Contentもしくは任意のViewGroupにカバーを追加できます。
 
 ![ss2](screenshots/ss2.png)
 ![ss3](screenshots/ss3.png)
