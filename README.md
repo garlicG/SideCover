@@ -12,7 +12,6 @@ SideCoverはコンテンツの上側に表示されるカバーのようなUIウ
 * Window、Contentもしくは任意のViewGroupにカバーを追加できます。
 
 ![ss2](screenshots/ss2.png)
-![ss3](screenshots/ss3.png)
 
 Usage　
 --
