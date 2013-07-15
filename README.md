@@ -6,19 +6,19 @@ Features　
 SideCoverはコンテンツの上側に表示されるカバーのようなUIウィジェットです。
 
 * Coverは左側か右側に実装できます。
-* スワイプ操作でCoverを開け閉めすることもできます。  
+* 任意のイベントか画面のスワイプ、もしくは端っこからの引き出しでCoverを開け閉めできます。  
 * StyleでいくつかのCoverの属性を指定できます。  
-  * background,coverWidth,shadowWidh,shadowColor,透過アニメーションの有無
-* Window、Contentもしくは任意のViewGroupにカバーを追加できます。
+  * background,coverWidth,shadowWidh,shadowColor,edgeWide
+* Window(ActionBar含む画面全体)、Content(ActionBarじゃない部分)もしくは任意のViewGroupにカバーを追加できます。
 
 ![ss2](screenshots/ss2.png)
 
 Usage　
 --
+（準備中）
+
 library:ライブラリプロジェクト  
 sample:サンプルプロジェクト  
-サンプル見てください
-
 
 License
 --
