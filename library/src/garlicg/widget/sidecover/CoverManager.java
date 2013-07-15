@@ -23,8 +23,8 @@ import android.view.ViewGroup.LayoutParams;
 
 public class CoverManager {
 	private final Activity mActivity;
-	private final SideCover mSideCover;
 	private final ObserveContainer mObserveContainer;
+	private SideCover mSideCover;
 
 	public CoverManager(Activity activity){
 		this(activity, SideCover.POSITION_LEFT, SideCover.TOUCH_MODE_CONTENT);
@@ -32,13 +32,25 @@ public class CoverManager {
 	
 	public CoverManager(Activity activity,int gravity , int touchMode){
 		mActivity = activity;
-		mSideCover = (gravity == SideCover.POSITION_LEFT) ? 
-				new LeftCover(activity) : new RightCover(activity);
+		if(gravity == SideCover.POSITION_LEFT){
+			mSideCover = new LeftCover(activity);
+		}
+		else if(gravity == SideCover.POSITION_RIGHT){
+			mSideCover = new RightCover(activity);
+		}
+		else{
+			throw new IllegalArgumentException("unknow gravity of SideCover");
+		}
 		mSideCover.setTouchMode(touchMode);
 		mObserveContainer = new ObserveContainer(activity , mSideCover);
 	}
 
-	// OK
+	/**
+	 * setContentViewと一緒にカバーをバインドします。
+	 * カバーはcontentにバインドされます。(ActionBarは含まないよ)
+	 * Activity側でsetContentViewをよばないでください。
+	 * @param layoutResId
+	 */
     public void setContentViewWithContentCover(int layoutResId){
     	mSideCover.setDisplayMode(SideCover.DISPLAY_ON_CONTENT);
     	
@@ -52,7 +64,12 @@ public class CoverManager {
     	mObserveContainer.addView(mSideCover);
     }
     
-    // OK
+    /**
+     * setContentViewと一緒にカバーをバインドします。
+     * カバーはcontentにバインドされます。(ActionBarは含まないよ)
+     * Activity側でsetContentViewをよばないでください。
+     * @param View view
+     */
     public void setContentViewWithContentCover(View view){
     	mSideCover.setDisplayMode(SideCover.DISPLAY_ON_CONTENT);
 		ViewGroup content = (ViewGroup)mActivity.findViewById(android.R.id.content);
@@ -63,7 +80,11 @@ public class CoverManager {
     }
     
     
-    // OK
+    /**
+     * setContentViewと一緒にカバーをバインドします。
+     * カバーはWindow全体にバインドされます。(ActionBarごとずれるよ)
+     * Activity側でsetContentViewをよばないでください。
+     */
     public void setContentViewWithWindowCover(int layoutResId){
     	mSideCover.setDisplayMode(SideCover.DISPLAY_ON_WINDOW);
     	ViewGroup decorView = (ViewGroup) mActivity.getWindow().getDecorView();
@@ -77,7 +98,11 @@ public class CoverManager {
     	mObserveContainer.addView(mSideCover);
     }
     
-    // OK
+    /**
+     * setContentViewと一緒にカバーをバインドします。
+     * カバーはWindow全体にバインドされます。(ActionBarごとずれるよ)
+     * Activity側でsetContentViewをよばないでください。
+     */
     public void setContentViewWithWindowCover(View view){
     	mSideCover.setDisplayMode(SideCover.DISPLAY_ON_WINDOW);
 		ViewGroup decorView = (ViewGroup) mActivity.getWindow().getDecorView();
@@ -90,7 +115,10 @@ public class CoverManager {
 		mObserveContainer.addView(mSideCover);
     }
     
-    // OK
+    /**
+     * ViewGroupに対してカバービューをバインドします。
+     * @param targetContent 
+     */
     public void bindContentCover(ViewGroup targetContent){
     	int count = targetContent.getChildCount();
     	if(count > 0){
@@ -106,6 +134,10 @@ public class CoverManager {
     	}
     }
     
+    /**
+     * カバーのビューを設定します。
+     * @param view
+     */
     public void setCoverView(View view){
     	mSideCover.setCoverView(view);
     }
@@ -128,6 +160,10 @@ public class CoverManager {
     
     public boolean isVisible(){
     	return mSideCover.isVisible();
+    }
+    
+    public void setOnCoverChangeListener(SideCover.OnCoverChangeListener listener){
+    	mSideCover.setOnCoverChangeListener(listener);
     }
 	
 }

@@ -6,7 +6,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
     </style>
     
-    <style name="CusomTheme" parent="@android:style/Theme.Black">
+    <style name="CusomTheme" parent="@android:style/Theme.Black">z
         <item name="sideCoverStyle">@style/CustomSideCover</item>
     </style>
     

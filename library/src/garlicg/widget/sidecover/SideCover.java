@@ -19,7 +19,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -54,7 +53,7 @@ public abstract class SideCover extends FrameLayout{
     protected Drawable mDropShadowDrawable;
     protected boolean mIsDragging;
     protected boolean mIsCoverVisible;
-    protected boolean mIsTranslateAnimation;
+    protected boolean mIsAlphaAnimation;
     private int mDisplayMode;
     private int mCoverState = STATE_CLOSED;
     protected int mDropShadowWidth;
@@ -65,6 +64,14 @@ public abstract class SideCover extends FrameLayout{
     protected int mCloseEnough;
     protected long mPeekDelay;
     private int mSystemParHeight;
+    
+    public interface OnCoverChangeListener{
+    	public void onChange(int stateCode);
+    }
+    private OnCoverChangeListener mListener;
+    protected void setOnCoverChangeListener(OnCoverChangeListener listener){
+    	mListener = listener;
+    }
     
     private class SmoothInterpolator implements Interpolator {
         @Override
@@ -78,7 +85,8 @@ public abstract class SideCover extends FrameLayout{
         this(context, null, R.attr.sideCoverStyle);
     }
 
-    public SideCover(Context context, AttributeSet attrs, int defStyle) {
+    @SuppressWarnings("deprecation")
+	public SideCover(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setWillNotDraw(false);
         setFocusable(false);
@@ -91,7 +99,7 @@ public abstract class SideCover extends FrameLayout{
         final int dropShadowColor = a.getColor(R.styleable.SideCover_scDropShadowColor, 0x66000000);
         mDropShadowDrawable = getDropShadowColor(dropShadowColor);
         mDropShadowWidth = a.getDimensionPixelSize(R.styleable.SideCover_scDropShadowWidth, dpToPx(4));
-        mIsTranslateAnimation = a.getBoolean(R.styleable.SideCover_scTranslateAnimation, false);
+//        mIsTranslateAnimation = a.getBoolean(R.styleable.SideCover_scTranslateAnimation, false);
         a.recycle();
         
         mCoverContainer = new FrameLayout(context);
@@ -185,6 +193,8 @@ public abstract class SideCover extends FrameLayout{
     protected void setCoverState(int state){
     	if(mCoverState != state){
     		mCoverState = state;
+    		if(mListener != null)
+    		mListener.onChange(state);
     		if(DEBUG)
     		android.util.Log.i("CoverState", "state change to : " + state);
     	}

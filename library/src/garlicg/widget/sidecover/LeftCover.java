@@ -64,20 +64,20 @@ public class LeftCover extends SideCover{
             final int oldMenuLeft = mCoverContainer.getLeft();
             final int offset = (int) ((-(1.f-openRatio) * menuWidth)) - oldMenuLeft;
             mCoverContainer.offsetLeftAndRight(offset);
-            if(mIsTranslateAnimation)
-            	mCoverContainer.getBackground().setAlpha((int) ((0xFF-(0xFF-ON_EDGE_COVER_ALPHA) * (1.f - openRatio))));
+//            if(mIsAlphaAnimation)
+//            	mCoverContainer.getBackground().setAlpha((int) ((0xFF-(0xFF-ON_EDGE_COVER_ALPHA) * (1.f - openRatio))));
         }
     }
 
     @Override
     protected void drawDropShadow(Canvas canvas, int offsetPixels) {
         final int height = getHeight();
-        final int menuWidth = mCoverWidth;
-        final float openRatio = 1.f- ((menuWidth - (float) offsetPixels) / menuWidth);
+//        final int menuWidth = mCoverWidth;
+//        final float openRatio = 1.f- ((menuWidth - (float) offsetPixels) / menuWidth);
 
         mDropShadowDrawable.setBounds(offsetPixels, 0, offsetPixels + mDropShadowWidth, height);
-        if(mIsTranslateAnimation)
-        	mDropShadowDrawable.setAlpha((int) (0xFF-(0xFF * (1.f - openRatio)))); 
+//        if(mIsAlphaAnimation)
+//        	mDropShadowDrawable.setAlpha((int) (0xFF-(0xFF * (1.f - openRatio)))); 
         mDropShadowDrawable.draw(canvas);
     }
 

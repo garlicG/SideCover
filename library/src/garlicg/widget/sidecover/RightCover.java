@@ -66,8 +66,6 @@ public class RightCover extends SideCover {
             final int newRight = width + (int) ((1.f-openRatio) * menuWidth);
             final int offset = newRight - oldMenuRight;
             mCoverContainer.offsetLeftAndRight(offset);
-            if(mIsTranslateAnimation)
-            	mCoverContainer.getBackground().setAlpha((int)(0xFF - ((0xFF-ON_EDGE_COVER_ALPHA)*(1.f-openRatio))));
         }
     }
 
@@ -77,11 +75,11 @@ public class RightCover extends SideCover {
         final int width = getWidth();
         final int left = width - offsetPixels - mDropShadowWidth;
         final int right = width - offsetPixels;
-        final float openRatio = ((float) offsetPixels) / mCoverWidth;
+//        final float openRatio = ((float) offsetPixels) / mCoverWidth;
 
         mDropShadowDrawable.setBounds(left, 0, right, height);
-        if(mIsTranslateAnimation)
-        	mDropShadowDrawable.setAlpha((int) (0xFF-(0xFF * (1.f - openRatio))));
+//        if(mIsAlphaAnimation)
+//        	mDropShadowDrawable.setAlpha((int) (0xFF-(0xFF * (1.f - openRatio))));
         mDropShadowDrawable.draw(canvas);
     }
 
