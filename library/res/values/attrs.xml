@@ -8,6 +8,7 @@
         <attr name="scDropShadowWidth" format="dimension" />
         <attr name="scDropShadowColor" format="color" />
         <attr name="scTranslateAnimation" format="boolean" />
+        <attr name="scEdgeWidth" format="dimension" />
     </declare-styleable>
 
 </resources>

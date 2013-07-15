@@ -43,11 +43,13 @@ public abstract class SideCover extends FrameLayout{
     public static final int POSITION_RIGHT = 1;
     public static final int TOUCH_MODE_NONE = 0;
     public static final int TOUCH_MODE_CONTENT = 1;
+    public static final int TOUCH_MODE_EDGE = 2;
     public static final int STATE_CLOSED = 0;
     public static final int STATE_CLOSING = 1;
     public static final int STATE_DRAGGING = 2;
     public static final int STATE_OPENING = 4;
     public static final int STATE_OPEN = 8;
+    
     private Scroller mScroller;
     protected FrameLayout mCoverContainer;
     protected Drawable mDropShadowDrawable;
@@ -62,6 +64,7 @@ public abstract class SideCover extends FrameLayout{
     protected int mTouchWidth;
     protected int mTouchMode = TOUCH_MODE_CONTENT;
     protected int mCloseEnough;
+    private int mEdgeWidth;
     protected long mPeekDelay;
     private int mSystemParHeight;
     
@@ -100,6 +103,7 @@ public abstract class SideCover extends FrameLayout{
         mDropShadowDrawable = getDropShadowColor(dropShadowColor);
         mDropShadowWidth = a.getDimensionPixelSize(R.styleable.SideCover_scDropShadowWidth, dpToPx(4));
 //        mIsTranslateAnimation = a.getBoolean(R.styleable.SideCover_scTranslateAnimation, false);
+        mEdgeWidth =a.getDimensionPixelSize(R.styleable.SideCover_scEdgeWidth, dpToPx(24));
         a.recycle();
         
         mCoverContainer = new FrameLayout(context);
@@ -246,7 +250,11 @@ public abstract class SideCover extends FrameLayout{
     private void updateTouchAreaWidth() {
         if (mTouchMode == TOUCH_MODE_CONTENT) {
             mTouchWidth = getMeasuredWidth();
-        } else {
+        } 
+        else if(mTouchMode == TOUCH_MODE_EDGE){
+        	mTouchWidth =mEdgeWidth;
+        }
+        else {
             mTouchWidth = 0;
         }
     }
