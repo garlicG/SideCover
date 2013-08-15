@@ -15,6 +15,8 @@
  */
 package garlicg.widget.sidecover;
 
+import java.util.logging.Logger;
+
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -99,6 +101,7 @@ public class ObserveContainer extends FrameLayout{
 		
 		if (mVelocityTracker == null) {
 			mVelocityTracker = VelocityTracker.obtain();
+			android.util.Log.i("observeContainer", "onInterceptTouchEvent:obtain");
 		}
 		mVelocityTracker.addMovement(ev);
 		return mSideCover.mIsDragging;
@@ -112,6 +115,7 @@ public class ObserveContainer extends FrameLayout{
         final int action = event.getAction() & MotionEvent.ACTION_MASK;
 
         if (mVelocityTracker == null){
+        	android.util.Log.i("observeContainer", "onTouchEvent:obtain");
         	mVelocityTracker = VelocityTracker.obtain();
         }
         mVelocityTracker.addMovement(event);
@@ -159,10 +163,21 @@ public class ObserveContainer extends FrameLayout{
             }
 
             case MotionEvent.ACTION_CANCEL:
+            	// unknown error
+            	try {
+            		mVelocityTracker.recycle();
+				} catch (IllegalStateException e) {
+					e.toString();
+				}
             case MotionEvent.ACTION_UP: {
             	mVelocityTracker.computeCurrentVelocity(1000, mMaxVelocity);
                 mSideCover.onUpEvent(event , mVelocityTracker);
-                mVelocityTracker.recycle();
+                // unknown error
+                try {
+                	mVelocityTracker.recycle();
+                } catch (IllegalStateException e) {
+                	e.toString();
+                }
                 break;
             }
         }
