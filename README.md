@@ -1,6 +1,9 @@
 SideCover
 ======================
 
+
+# 非推奨：DrawerLayoutを使った方が良い。
+
 Features　
 --
 SideCoverはコンテンツの上側に表示されるカバーのようなUIウィジェットです。
